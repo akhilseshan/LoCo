@@ -12,7 +12,7 @@ app.get('/todo',function(req,res){
 
 app.post('/todo',urlencodedParser,function(req,res){
    data.push(req.body);
-   res.json(data)
+   res.json(data);
 });
 
 app.delete('/todo',function(req,res){});
