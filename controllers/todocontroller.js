@@ -1,7 +1,7 @@
 var bodyParser= require('body-parser')
 
 
-//var data=[{item:'kaloor'},{item:'broadway'},{item:'kadavanthra'}]
+var data=[{item:'kaloor'},{item:'broadway'},{item:'kadavanthra'}]
 
 
 var urlencodedParser= bodyParser.urlencoded({extended:false});
