@@ -5,16 +5,29 @@
         </title>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
             <link href="/assets/styles.css" rel="stylesheet" type="text/css"/>
+            <link href='https://fonts.googleapis.com/css?family=Sofia' rel='stylesheet'>
 
+            <style>
+                #logo {
+                    font-family: 'Sofia';font-size:32px;
+                    float:right;
+                   
+                    padding:10px;              
+                    
+                }
+                </style>
             
 
     </head>
 
     <body>
+            
         <div id="todo-table">
+                <div id="logo">LoCo</div>
             <form>
                 <input type="text" name="item" placeholder="pick-up point" required>
                 <input type="text" name="item" placeholder="destination" required>
+                
                 <button type="submit">
                  Find Route
                 </button>
@@ -31,7 +44,7 @@
         </div>
 
        <div>
-        <iframe width="860" height="300" src="https://maphub.net/embed/31776?panel=1" frameborder="0"></iframe>
+        <iframe width="100%" height="300" src="https://maphub.net/embed/31776?panel=1" frameborder="0"></iframe>
        </div>
         
     </body>
