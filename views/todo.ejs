@@ -6,26 +6,34 @@
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
             <link href="/assets/styles.css" rel="stylesheet" type="text/css"/>
 
+            
 
     </head>
 
     <body>
         <div id="todo-table">
             <form>
-                <input type="text" name="item" placeholder="add new item..." required>
+                <input type="text" name="item" placeholder="pick-up point" required>
+                <input type="text" name="item" placeholder="destination" required>
                 <button type="submit">
-                 Add Item
+                 Find Route
                 </button>
             </form>
-            <ul>
-             <% for(var i=0;i < todos.length; i++){ %>
-                <li><%= todos[i].item %></li>
 
-            <% } %>
-                
-           
-            </ul>
+            <div>
+                <ul>
+                    
+                   </ul>
+            </div>
+
+              
 
         </div>
+
+       <div>
+        <iframe width="860" height="300" src="https://maphub.net/embed/31776?panel=1" frameborder="0"></iframe>
+       </div>
+        
     </body>
 </html>
+

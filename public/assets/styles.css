@@ -21,25 +21,28 @@ body{
 }
 
 input[type="text"]{
-    width: 70%;
+    width: 80%;
     padding: 20px;
     background:#181c22;
-    border: 0;
+    height: 5%;
     float: left;
-    font-size: 20px;
+    font-size:10px;
     color: #989898;
+    border: double;
 }
+
+
 
 button{
     padding: 20px;
-    width: 30%;
-    float: left;
+    width:15%;
+    float: right;
     background: #23282e;
     border: 0;
     box-sizing: border-box;
     color: #fff;
     cursor: pointer;
-    font-size: 20px;
+    font-size: 10px;
 }
 
 ul{
