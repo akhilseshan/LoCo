@@ -3,9 +3,9 @@ const Schema = mongoose.Schema;
 
 //schema for storing user details
 const userSchema = new Schema({
-    username: String,
-    googleId: String,
-    emailId: String
+    pickup: String,
+    destination: String,
+    
 });
 
 const User = mongoose.model('user',userSchema);
