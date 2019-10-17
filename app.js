@@ -1,4 +1,6 @@
 var express=require('express');
+var routesModel = require('./models/routes.js');
+var request = require('request');
 
 const mongoose = require('mongoose');
 
@@ -14,6 +16,25 @@ mongoose.connect("mongodb://usermee_30:aim2reach@cluster0-shard-00-00-yofix.mong
     console.log('connected to mongodb');
 });
 
+app.get('/abcd',(req,res) => {
+    new routesModel({
+        user2: "localuser2",
+        starttime: "",
+        endTime: "",
+        status: ""
+    }).save().then((newroutesModel) => {
+        console.log('abcd ', newroutesModel);
+    });
+})
+
+app.post('/efgh', (req,res) => {
+    console.log(req.body);
+    request('https://maps.googleapis.com/maps/api/place/findplacefromtext/json?input=Museum%20of%20Contemporary%20Art%20Australia&inputtype=textquery&fields=photos,formatted_address,name,rating,opening_hours,geometry&key=AIzaSyAQEx35-uiMe9H881IvAjpECLbDCg30Jog', function (error, response, body) {
+    console.error('error:', error); // Print the error if one occurred
+    console.log('statusCode:', response && response.statusCode); // Print the response status code if a response was received
+    console.log('body:', body); // Print the HTML for the Google homepage.
+});
+})
 
 todocontroller(app);
 
