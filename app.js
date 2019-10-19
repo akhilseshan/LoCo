@@ -18,30 +18,42 @@ mongoose.connect("mongodb://usermee_30:aim2reach@cluster0-shard-00-00-yofix.mong
 });
 
 
+    app.post('/efgh', (req,res) => { 
+    console.log(req.body);
+    var localuser1 = req.user.pickup;
+    var localuser2 = req.user.destination;
 
-app.get('/efgh',(req,res) => {
+    
+    console.log(localuser1);
+    console.log(localuser2);
+
     new userSchemaModel({
-        pickup: "localuser1",
-        destination:"localuser2",
+        pickup:localuser1,
+        destination:localuser2,
      
         
     }).save().then((userSchemaModel) => {
         console.log('efgh', userSchemaModel);
     });
-});
-         
 
-    app.post('/efgh', (req,res) => { 
-    console.log(req.body);
-    var localuser1 = req.user.pickup;
-    var localuser2 = req.user.destination;
+   
+
+    
+});
+
+app.get('/efgh',(req,res) => {
     
     request("https://www.google.com/maps/embed/v1/directions?key=AIzaSyB_dvpiDyg07irvwzeHg2afFILSaXRXH7E&origin=" + localuser1+ "&destination=" + localuser2 +"&avoid=tolls|highways", function (error, response, body) {
     console.error('error:', error); // Print the error if one occurred
     console.log('statusCode:', response && response.statusCode); // Print the response status code if a response was received
     console.log('body:', body); // Print the HTML for the Google homepage.
 });
+    
 });
+
+
+
+
 
 todocontroller(app);
 

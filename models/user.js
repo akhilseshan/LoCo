@@ -3,9 +3,8 @@ const Schema = mongoose.Schema;
 
 //schema for storing user details
 const userSchema = new Schema({
-    pickup: String,
-    destination: String,
-    
+    pickup:String,
+    destination: String
 });
 
 const User = mongoose.model('user',userSchema);
