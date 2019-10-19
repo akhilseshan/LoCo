@@ -17,17 +17,7 @@ mongoose.connect("mongodb://usermee_30:aim2reach@cluster0-shard-00-00-yofix.mong
     console.log('connected to mongodb');
 });
 
-app.get('/abcd',(req,res) => {
-    new routesSchemaModel({
-        Departure:"localtime",
-        Bus_id: "",
-        Metro_id:"",
-        Walk:"",
-        Arrival:"localtime",    
-        
-    }).save().then((routesSchemaModel) => {
-        console.log('abcd', routesSchemaModel);
-    });
+
 
 app.get('/efgh',(req,res) => {
     new userSchemaModel({
@@ -58,4 +48,3 @@ todocontroller(app);
 app.listen(3000);
 
 console.log('you are listening to port 3000');
-}
