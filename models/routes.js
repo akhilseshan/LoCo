@@ -3,12 +3,11 @@ const Schema = mongoose.Schema;
 
 //schema for storing meeting details
 const routes = new Schema({
-   Routes: Array,
-           
-    user2: String,
-    startTime: Date,
-    endTime: Date,
-    status: String
+    Departure:Time,
+    Bus_id: String,
+    Metro_id:String,
+    Walk:String,
+    Arrival:String,  
 });
 
 const Path = mongoose.model('path',routes);
