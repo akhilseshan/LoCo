@@ -3,7 +3,7 @@ const Schema = mongoose.Schema;
 
 //schema for storing meeting details
 const routes = new Schema({
-    Departure:Time,
+    Departure:String,
     Bus_id: String,
     Metro_id:String,
     Walk:String,
