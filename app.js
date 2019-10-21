@@ -1,58 +1,57 @@
-var express=require('express');
+var express = require('express');
 var routesModel = require('./models/routes.js');
 var userSchemaModel = require('./models/user.js');
 var request = require('request');
+var bodyParser = require('body-parser');
 
 const mongoose = require('mongoose');
 
 
-var todocontroller=require('./controllers/todocontroller');
-var app=express();
+var todocontroller = require('./controllers/todocontroller');
+var app = express();
 
-app.set('view engine',"ejs");
+app.set('view engine', "ejs");
 
 app.use(express.static('./public'))
 
-mongoose.connect("mongodb://usermee_30:aim2reach@cluster0-shard-00-00-yofix.mongodb.net:27017,cluster0-shard-00-01-yofix.mongodb.net:27017,cluster0-shard-00-02-yofix.mongodb.net:27017/test?ssl=true&replicaSet=Cluster0-shard-0&authSource=admin&retryWrites=true&w=majority",() =>{
+mongoose.connect("mongodb://usermee_30:aim2reach@cluster0-shard-00-00-yofix.mongodb.net:27017,cluster0-shard-00-01-yofix.mongodb.net:27017,cluster0-shard-00-02-yofix.mongodb.net:27017/test?ssl=true&replicaSet=Cluster0-shard-0&authSource=admin&retryWrites=true&w=majority", { useNewUrlParser: true , useUnifiedTopology: true }, () => {
     console.log('connected to mongodb');
 });
 
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.json());
 
-    app.post('/efgh', (req,res) => { 
-    
+app.post('/efgh', (req, res) => {
+
     console.log(req.body);
-    var localuser1 = req.body.pickup;
-    var localuser2 = req.body.destination;
-     
-        
-    console.log(localuser1);
-    console.log(localuser2);
+    var pickup = req.body.item1;
+    var destination = req.body.item2;
+
+
+    console.log("Pickup:",pickup);
+    console.log("Destination:",destination);
 
     new userSchemaModel({
-        pickup:localuser1,
-        destination:localuser2,
-     
-        
+        pickup: this.pickup,
+        destination: this.destination,
+
+
     }).save().then((userSchemaModel) => {
-        console.log('efgh', userSchemaModel);
+        console.log("Details added successfully");
+    });
+});
+
+app.get('/efgh', (req, res) => {
+
+
+    request("https://www.google.com/maps/embed/v1/directions?key=AIzaSyB_dvpiDyg07irvwzeHg2afFILSaXRXH7E&origin=" + { localuser1: req.get('pickup') } + "&destination=" + { localuser2: req.get('destination') } + "&avoid=tolls|highways", function (error, response, body) {
+        //request("https://www.google.com/maps/embed/v1/directions?key=AIzaSyB_dvpiDyg07irvwzeHg2afFILSaXRXH7E&origin=" +localuser1+ "&destination=" +localuser2+"&avoid=tolls|highways", function (error, response, body) {
+        console.log(req.body);
+        console.error('error:', error); // Print the error if one occurred
+        console.log('statusCode:', response && response.statusCode); // Print the response status code if a response was received
+        console.log('body:', body); // Print the HTML for the Google homepage.
     });
 
-   
-
-    
-});
-
-app.get('/efgh',(req,res) => {
-     
-    
-    request("https://www.google.com/maps/embed/v1/directions?key=AIzaSyB_dvpiDyg07irvwzeHg2afFILSaXRXH7E&origin=" +{localuser1:req.get('pickup')}+ "&destination=" +{localuser2:req.get('destination')}+"&avoid=tolls|highways", function (error, response, body){
-    //request("https://www.google.com/maps/embed/v1/directions?key=AIzaSyB_dvpiDyg07irvwzeHg2afFILSaXRXH7E&origin=" +localuser1+ "&destination=" +localuser2+"&avoid=tolls|highways", function (error, response, body) {
-    console.log(req.body);   
-    console.error('error:', error); // Print the error if one occurred
-    console.log('statusCode:', response && response.statusCode); // Print the response status code if a response was received
-    console.log('body:', body); // Print the HTML for the Google homepage.
-});
-    
 });
 
 
