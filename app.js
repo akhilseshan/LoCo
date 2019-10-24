@@ -3,7 +3,6 @@ var routesModel = require('./models/routes.js');
 var userSchemaModel = require('./models/user.js');
 var request = require('request');
 var bodyParser = require('body-parser');
-
 const mongoose = require('mongoose');
 
 
@@ -42,11 +41,8 @@ app.post('/efgh', (req, res) => {
 });
 
 app.get('/efgh', (req, res) => {
-
-
-    request("https://www.google.com/maps/embed/v1/directions?key=AIzaSyB_dvpiDyg07irvwzeHg2afFILSaXRXH7E&origin=" + { localuser1: req.get('pickup') } + "&destination=" + { localuser2: req.get('destination') } + "&avoid=tolls|highways", function (error, response, body) {
-        //request("https://www.google.com/maps/embed/v1/directions?key=AIzaSyB_dvpiDyg07irvwzeHg2afFILSaXRXH7E&origin=" +localuser1+ "&destination=" +localuser2+"&avoid=tolls|highways", function (error, response, body) {
-        console.log(req.body);
+    
+    request("https://www.google.com/maps/embed/v1/directions?key=AIzaSyB_dvpiDyg07irvwzeHg2afFILSaXRXH7E&origin="+pick+"&destination="+dest+"&avoid=tolls|highways", function (error, response, body) {
         console.error('error:', error); // Print the error if one occurred
         console.log('statusCode:', response && response.statusCode); // Print the response status code if a response was received
         console.log('body:', body); // Print the HTML for the Google homepage.
