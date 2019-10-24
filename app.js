@@ -40,7 +40,7 @@ app.post('/efgh', (req, res) => {
     });
 });
 
-app.get('/efgh', (req, res) => {
+app.get('/abcd', (req, res) => {
     
     request("https://www.google.com/maps/embed/v1/directions?key=AIzaSyB_dvpiDyg07irvwzeHg2afFILSaXRXH7E&origin="+pick+"&destination="+dest+"&avoid=tolls|highways", function (error, response, body) {
         console.error('error:', error); // Print the error if one occurred
