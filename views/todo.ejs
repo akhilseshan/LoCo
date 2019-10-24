@@ -5,6 +5,7 @@
 
     </title>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB_dvpiDyg07irvwzeHg2afFILSaXRXH7E&v=3.exp&sensor=false&libraries=places"></script>
     <link href="/assets/styles.css" rel="stylesheet" type="text/css" />
     <link href='https://fonts.googleapis.com/css?family=Sofia' rel='stylesheet'>
 
@@ -17,6 +18,40 @@
             padding: 10px;
         }
     </style>
+    <script>
+        function initialize() {
+            var input = document.getElementById('searchTextField');
+            new google.maps.places.Autocomplete(input);
+        }
+
+        google.maps.event.addDomListener(window, 'load', initialize);
+    </script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB_dvpiDyg07irvwzeHg2afFILSaXRXH7E" type="text/javascript"></script>
+    <style type="text/css">
+        html,
+        body,
+        #map {
+            height: 100%;
+            margin: 0;
+        }
+    </style>
+    <script type="text/javascript">
+        function initialize() {
+            var map = new google.maps.Map(
+                document.getElementById('map'), {
+                    center: new google.maps.LatLng(37.4419, -122.1419),
+                    zoom: 13,
+                    mapTypeId: google.maps.MapTypeId.ROADMAP
+                });
+
+            var marker = new google.maps.Marker({
+                position: new google.maps.LatLng(37.4419, -122.1419),
+                map: map
+            });
+
+        }
+        google.maps.event.addDomListener(window, 'load', initialize);
+    </script>
 
 
 </head>
@@ -29,25 +64,11 @@
             <input id="pp" type="text" name="item1" placeholder="pickup" required>
             <input id="dp" type="text" name="item2" placeholder="destination" required>
             <input type="submit" name="submit">
-
+            <input id="searchTextField" type="text" size="50">
         </form>
-
-        <div>
-            <iframe
-            width="750px"
-            height="300px"
-            src="https://www.google.com/maps/embed/v1/directions?key=AIzaSyB_dvpiDyg07irvwzeHg2afFILSaXRXH7E&origin=kaloor&destination=edapally&avoid=tolls|highways"></iframe>
-            
-        </div>
-
-
-
-
+        <div id="map"></div>
 
     </div>
-
-
-
 </body>
 
 </html>
