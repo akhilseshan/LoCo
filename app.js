@@ -91,7 +91,7 @@ app.post('/abcd', (req, res) => {
 });
 
 app.get('/abcd', (req, res) => {
-    res.render('abcd');
+    res.render('enter');
    });
 
 
