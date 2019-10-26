@@ -91,8 +91,13 @@ app.post('/abcd', (req, res) => {
 });
 
 app.get('/abcd', (req, res) => {
+<<<<<<< HEAD
     res.render('enter');
    });
+=======
+   res.redirect('enter');
+  });
+>>>>>>> upstream/master
 
 
 //app.get('/efgh', (req, res) => {
