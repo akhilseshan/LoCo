@@ -91,8 +91,8 @@ app.post('/abcd', (req, res) => {
 });
 
 app.get('/abcd', (req, res) => {
-    res.render('abcd');
-   });
+   res.redirect('enter');
+  });
 
 
 //app.get('/efgh', (req, res) => {
