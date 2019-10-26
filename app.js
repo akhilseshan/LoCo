@@ -1,5 +1,5 @@
 var express = require('express');
-var transferModel = require('./models/transfer.js');
+var transferSchemaModel = require('./models/transfer.js');
 var userSchemaModel = require('./models/user.js');
 var request = require('request');
 var bodyParser = require('body-parser');
