@@ -8,6 +8,7 @@ const transferSchema = new Schema({
     End: String,
     StartTime:String,
     EndTime:String,
+    Stops:Array
     
 });
 
