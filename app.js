@@ -43,20 +43,21 @@ app.post('/efgh', (req, res) => {
 app.post('/abcd', (req, res) => {
 
     console.log(req.body);
+    var Bus_no=req.body.id_code;
     var Startpt = req.body.item1;
     var Endpt= req.body.item2;
     var Sttime= req.body.StartTime;
     var Entime= req.body.EndTime;
-    var first= req.body.Stop00;
-    var second= req.body.Stop01;
-    var third= req.body.Stop02;
-    var fourth= req.body.Stop03;
-    var fifth= req.body.Stop04;
-    var sixth= req.body.Stop05;
-    var seventh= req.body.Stop06;
+    var first= req.body.Stops[0];
+    var second= req.body.Stops[1];
+    var third= req.body.Stops[2];
+    var fourth= req.body.Stops[3];
+    var fifth= req.body.Stops[4];
+    var sixth= req.body.Stops[5];
+    var seventh= req.body.Stops[6];
     var frequent=req.body.freq;
 
-
+    console.log("Bus_id",Bus_no);
     console.log("Start:",Startpt);
     console.log("End:",Endpt);
     console.log("Starting Time:",Sttime);
@@ -105,7 +106,38 @@ app.get('/abcd', (req, res) => {
 
 //});
 
+app.get('/abcd',(req,res)=>{
+    var mydoc=db.transferSchemaModel.find({Start:{$gt:Vytilla}});
+ print(json(mydoc))
+ console.log("found it");
 
+});
+ 
+
+app.get('/efgh','/abcd',(req,res) => {
+    //get the value from form in the html page
+    var start_main= JSON.parse(req.body.pickup);
+    var end_main= JSON.parse(req.body.destination);
+    
+   var mydoc=db.transferSchemaModel.find( { stops: [start_main, end_main] } );
+    console.log("pickup:",start_main);
+    console.log("destination",end_main);
+
+   if(mydoc)
+   {    var dets=mydoc;
+       console.log("Bus Found");
+
+       var bus_rec=dets.id_code;
+       var startWhere=dets.item1;
+       var endWhere=dets.item2;
+       console.log("Bus_id:",bus_rec);
+       console.log("Starting From:",startWhere);
+       console.log("Ends @:",endWhere);
+
+   }
+
+    res.redirect('/explore');
+});
 
 
 
