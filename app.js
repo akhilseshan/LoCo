@@ -6,9 +6,18 @@ var bodyParser = require('body-parser');
 const mongoose = require('mongoose');
 
 
+
 var todocontroller = require('./controllers/todocontroller');
 var app = express();
 
+
+app.get('/', function (req, res) {
+    res.send('GET request to the homepage')
+  })
+
+
+
+  
 app.set('view engine', "ejs");
 
 app.use(express.static('./public'))
@@ -19,6 +28,7 @@ mongoose.connect("mongodb://usermee_30:aim2reach@cluster0-shard-00-00-yofix.mong
 
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
+
 
 app.post('/efgh', (req, res) => {
 
@@ -106,20 +116,22 @@ app.get('/abcd', (req, res) => {
 
 //});
 
-app.get('/abcd',(req,res)=>{
-    var mydoc=db.transferSchemaModel.find({Start:{$gt:Vytilla}});
- print(json(mydoc))
- console.log("found it");
+//app.get('/abcd',(req,res)=>{
+   // var mydoc=db.transferSchemaModel.find({Start:{$gt:Vytilla}});
+ //print(json(mydoc))
+ //console.log("found it");
 
-});
+//});
  
 
-app.get('/efgh','/abcd',(req,res) => {
+app.get('/efgh',(req,res) => {
     //get the value from form in the html page
-    var start_main= JSON.parse(req.body.pickup);
-    var end_main= JSON.parse(req.body.destination);
+    var start_main=JSON.parse(req.body.pickup);
+    var end_main=JSON.parse(req.body.destination);
     
-   var mydoc=db.transferSchemaModel.find( { stops: [start_main, end_main] } );
+ var mydoc=transferSchemaModel.find( { Stops: { $all: ["vytilla", "edapally"]}} ).then((newtransferSchemaModel) => {
+       console.log(newtransferSchemaModel);
+   });
     console.log("pickup:",start_main);
     console.log("destination",end_main);
 
@@ -127,16 +139,16 @@ app.get('/efgh','/abcd',(req,res) => {
    {    var dets=mydoc;
        console.log("Bus Found");
 
-       var bus_rec=dets.id_code;
-       var startWhere=dets.item1;
+      var bus_rec=dets.id_code;
+      var startWhere=dets.item1;
        var endWhere=dets.item2;
        console.log("Bus_id:",bus_rec);
        console.log("Starting From:",startWhere);
        console.log("Ends @:",endWhere);
 
-   }
+  };
 
-    res.redirect('/explore');
+    res.render('/explore');
 });
 
 
