@@ -126,8 +126,8 @@ app.get('/abcd', (req, res) => {
 
 app.get('/efgh',(req,res) => {
     //get the value from form in the html page
-    var start_main=JSON.parse(req.body.pickup);
-    var end_main=JSON.parse(req.body.destination);
+    var start_main=req.body.pickup;
+    var end_main=req.body.destination;
     
  var mydoc=transferSchemaModel.find( { Stops: { $all: ["vytilla", "edapally"]}} ).then((newtransferSchemaModel) => {
        console.log(newtransferSchemaModel);
