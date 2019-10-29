@@ -40,14 +40,25 @@ app.post('/efgh', (req, res) => {
     console.log("Pickup:",pickup);
     console.log("Destination:",destination);
 
-    new userSchemaModel({
-        pickup: this.pickup,
-        destination: this.destination,
+    //new userSchemaModel({
+        //pickup: this.pickup,
+       // destination: this.destination,
 
 
-    }).save().then((userSchemaModel) => {
-        console.log("Details added successfully");
+   // }).save().then((userSchemaModel) => {
+       // console.log("Details added successfully");
+   // });
+
+    transferSchemaModel.find( { Stops: { $all: [pickup,destination]}} ).then((newtransferSchemaModel) => {
+        console.log("Bus id:",transferSchemaModel.Bus_id);
+        console.log("Found a bus");
+        
     });
+
+  
+    // console.log("pickup:",start_main);
+    // console.log("destination",end_main);
+ 
 });
 
 app.post('/abcd', (req, res) => {
@@ -58,41 +69,39 @@ app.post('/abcd', (req, res) => {
     var Endpt= req.body.item2;
     var Sttime= req.body.StartTime;
     var Entime= req.body.EndTime;
-    var first= req.body.Stops[0];
-    var second= req.body.Stops[1];
-    var third= req.body.Stops[2];
-    var fourth= req.body.Stops[3];
-    var fifth= req.body.Stops[4];
-    var sixth= req.body.Stops[5];
-    var seventh= req.body.Stops[6];
+    var stopwhere=[req.body.Stops00,req.body.Stops01,req.body.Stops02,req.body.Stops03,req.body.Stops04,req.body.Stops05,req.body.Stops06]
+    var iterator=stopwhere.values();
     var frequent=req.body.freq;
+
 
     console.log("Bus_id",Bus_no);
     console.log("Start:",Startpt);
     console.log("End:",Endpt);
     console.log("Starting Time:",Sttime);
     console.log("End Time:",Entime);
-    console.log("Stop 1:",first);
-    console.log("Stop 2:",second);
-    console.log("Stop 3:",third);
-    console.log("Stop 4:",fourth);
-    console.log("Stop 5:",fifth);
-    console.log("Stop 6:",sixth);
-    console.log("Stop 7:",seventh);
+    console.log(iterator.next().value); 
+    //console.log("Stop 1:",first);
+    //console.log("Stop 2:",second);
+    //console.log("Stop 3:",third);
+    //console.log("Stop 4:",fourth);
+    //console.log("Stop 5:",fifth);
+    //console.log("Stop 6:",sixth);
+    //console.log("Stop 7:",seventh);
     console.log("frequency:",frequent);
 
     new transferSchemaModel({
+        Bus_id:this.Bus_no,
         Start: this.startpt,
         End: this.Endpt,
         StartTime:this.Sttime,
         EndTime:this.Entime,
-        Stop00:this.first,
-        Stop01:this.second,
-        Stop02:this.third,
-        Stop03:this.fourth,
-        Stop04:this.fifth,
-        Stop05:this.sixth,
-        Stop06:this.seventh,
+        Stops:[this.first,this.second,this.third,this.fourth,this.fifth,this.sixth,this.seventh],
+        //Stop01:this.second,
+        //Stop02:this.third,
+        //Stop03:this.fourth,
+        //Stop04:this.fifth,
+        //Stop05:this.sixth,
+        //Stop06:this.seventh,
         freq:this.frequent
 
 
@@ -124,32 +133,6 @@ app.get('/abcd', (req, res) => {
 //});
  
 
-app.get('/efgh',(req,res) => {
-    //get the value from form in the html page
-    var start_main=req.body.pickup;
-    var end_main=req.body.destination;
-    
- var mydoc=transferSchemaModel.find( { Stops: { $all: ["vytilla", "edapally"]}} ).then((newtransferSchemaModel) => {
-       console.log(newtransferSchemaModel);
-   });
-    console.log("pickup:",start_main);
-    console.log("destination",end_main);
-
-   if(mydoc)
-   {    var dets=mydoc;
-       console.log("Bus Found");
-
-      var bus_rec=dets.id_code;
-      var startWhere=dets.item1;
-       var endWhere=dets.item2;
-       console.log("Bus_id:",bus_rec);
-       console.log("Starting From:",startWhere);
-       console.log("Ends @:",endWhere);
-
-  };
-
-    res.render('/explore');
-});
 
 
 
