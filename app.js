@@ -129,26 +129,26 @@ app.get('/efgh',(req,res) => {
     var start_main=req.body.pickup;
     var end_main=req.body.destination;
     
- var mydoc=transferSchemaModel.find( { Stops: { $all: ["vytilla", "edapally"]}} ).then((newtransferSchemaModel) => {
-       console.log(newtransferSchemaModel);
+ transferSchemaModel.find( { Stops: { $all: ["vytilla", "edapally"]}} ).then((currenttransferSchemaModel) => {
+       console.log(currenttransferSchemaModel);
    });
     console.log("pickup:",start_main);
     console.log("destination",end_main);
 
-   if(mydoc)
-   {    var dets=mydoc;
-       console.log("Bus Found");
+//    if(mydoc)
+//    {    var dets=mydoc;
+//        console.log("Bus Found");
 
-      var bus_rec=dets.id_code;
-      var startWhere=dets.item1;
-       var endWhere=dets.item2;
-       console.log("Bus_id:",bus_rec);
-       console.log("Starting From:",startWhere);
-       console.log("Ends @:",endWhere);
+//       var bus_rec=dets.id_code;
+//       var startWhere=dets.item1;
+//        var endWhere=dets.item2;
+//        console.log("Bus_id:",bus_rec);
+//        console.log("Starting From:",startWhere);
+//        console.log("Ends @:",endWhere);
 
-  };
+//   };
 
-    res.render('/explore');
+//    res.render('/explore');
 });
 
 
