@@ -1,60 +1,59 @@
 <html>
 
-
-    <head>
-        <style>
-            #todo-table{
-    position: relative;
-    width: 95%;
-    background: #090d13;
-    margin: 0 auto;
-    padding: 20px;
-    box-sizing: border-box;
-}
-
-#todo-table form:after{
-    margin: 0;
-    content: '';
-    display: block;
-    clear: both;
-}
-
-input[type="text"]{
-    width: 60%;
-    padding: 20px;
-    background:#181c22;
-    height: 5%;
-    float: left;
-    font-size:10px;
-    color: #989898;
-    border: double;
-}
-            
-            </style>
-    </head>
-    <body>
-        <body>
-
-            <div id="todo-table">
-                <div id="logo" style="color:ivory;Size:10px">LoCo</div>
-                <form action="/abcd" method="POST">
-                    <input type="text" name="id_code" placeholder="Unique Identification Code" required>
-                    <input id="pp" type="text" name="item1" placeholder="Start" required>
-                    <input id="dp" type="text" name="item2" placeholder="End" required>
-                    <input type="time" name="StartTime" placeholder="Operation starts @" required>
-                    <input type="time" name="EndTime" placeholder="Operation ends @" required>
-                    <input type="text" name="Stop00" placeholder="Stop00" required>
-                    <input type="text" name="Stop01" placeholder="Stop01" required>
-                    <input type="text" name="Stop02" placeholder="Stop02" required>
-                    <input type="text" name="Stop03" placeholder="Stop03">
-                    <input type="text" name="Stop04" placeholder="Stop04">
-                    <input type="text" name="Stop05" placeholder="Stop05">
-                    <input type="text" name="Stop06" placeholder="Stop06">
-                    <input type="text" name="freq"  placeholder="frequency" required>
-                    <input type="submit" name="submit">
-                    
-                </form>
-               
-</html>
+<head>
+    <style>
+        #todo-table {
+            position: relative;
+            width: 95%;
+            background: #090d13;
+            margin: 0 auto;
+            padding: 20px;
+            box-sizing: border-box;
+        }
         
-       
+        #todo-table form:after {
+            margin: 0;
+            content: '';
+            display: block;
+            clear: both;
+        }
+        
+        input[type="text"] {
+            width: 60%;
+            padding: 20px;
+            background: #181c22;
+            height: 5%;
+            float: left;
+            font-size: 10px;
+            color: #989898;
+            border: double;
+        }
+    </style>
+</head>
+
+<body>
+
+    <body>
+
+        <div id="todo-table">
+            <div id="logo" style="color:ivory;Size:10px">LoCo</div>
+            <form action="/abcd" method="POST">
+                <input type="text" name="id_code" placeholder="Unique Identification Code" required>
+                <input id="pp" type="text" name="item1" placeholder="Start" required>
+                <input id="dp" type="text" name="item2" placeholder="End" required>
+                <input type="time" name="StartTime" placeholder="Operation starts @" required>
+                <input type="time" name="EndTime" placeholder="Operation ends @" required>
+                <input type="text" name="Stop00" placeholder="Stop00" required>
+                <input type="text" name="Stop01" placeholder="Stop01" required>
+                <input type="text" name="Stop02" placeholder="Stop02" required>
+                <input type="text" name="Stop03" placeholder="Stop03">
+                <input type="text" name="Stop04" placeholder="Stop04">
+                <input type="text" name="Stop05" placeholder="Stop05">
+                <input type="text" name="Stop06" placeholder="Stop06">
+                <input type="text" name="freq" placeholder="frequency" required>
+                <input type="submit" name="submit">
+
+            </form>
+    </body>
+
+</html>
