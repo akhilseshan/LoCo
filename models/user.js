@@ -3,10 +3,10 @@ const Schema = mongoose.Schema;
 
 //schema for storing user details
 const userSchema = new Schema({
-    pickup:String,
+    pickup: String,
     destination: String
 });
 
-const User = mongoose.model('user',userSchema);
+const User = mongoose.model('user', userSchema);
 
 module.exports = User;
