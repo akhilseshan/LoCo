@@ -13,8 +13,7 @@ var app = express();
 
 app.get('/', function (req, res) {
     res.send('GET request to the homepage')
-  })
-
+  });
 
 
   
@@ -69,7 +68,7 @@ app.post('/abcd', (req, res) => {
     var Endpt= req.body.item2;
     var Sttime= req.body.StartTime;
     var Entime= req.body.EndTime;
-    var stopwhere=[req.body.Stops00,req.body.Stops01,req.body.Stops02,req.body.Stops03,req.body.Stops04,req.body.Stops05,req.body.Stops06]
+    let stopwhere=[req.body.Stops00,req.body.Stops01,req.body.Stops02,req.body.Stops03,req.body.Stops04,req.body.Stops05,req.body.Stops06]
     let iterator=stopwhere.keys();
     var frequent=req.body.freq;
 
