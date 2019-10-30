@@ -9,12 +9,9 @@ var app = express();
 
 app.get('/', function (req, res) {
     res.send('GET request to the homepage')
-<<<<<<< HEAD
   });
 
-=======
-})
->>>>>>> c066f40e7fb3c66ee6e45f466bda951f80fa9f4d
+
 
 app.set('view engine', "ejs");
 
@@ -48,39 +45,12 @@ app.post('/abcd', (req, res) => {
     console.log(req.body);
     var Bus_no = req.body.id_code;
     var Startpt = req.body.item1;
-<<<<<<< HEAD
-    var Endpt= req.body.item2;
-    var Sttime= req.body.StartTime;
-    var Entime= req.body.EndTime;
-    let stopwhere=[req.body.Stops00,req.body.Stops01,req.body.Stops02,req.body.Stops03,req.body.Stops04,req.body.Stops05,req.body.Stops06]
-    let iterator=stopwhere.keys();
-    var frequent=req.body.freq;
-
-
-    console.log("Bus_id",Bus_no);
-    console.log("Start:",Startpt);
-    console.log("End:",Endpt);
-    console.log("Starting Time:",Sttime);
-    console.log("End Time:",Entime);
-    console.log("Stop1:",iterator.next().value); 
-    console.log("Stop2:",iterator.next().value);
-    //console.log("Stop 1:",first);
-    //console.log("Stop 2:",second);
-    //console.log("Stop 3:",third);
-    //console.log("Stop 4:",fourth);
-    //console.log("Stop 5:",fifth);
-    //console.log("Stop 6:",sixth);
-    //console.log("Stop 7:",seventh);
-    console.log("frequency:",frequent);
-
-=======
     var Endpt = req.body.item2;
     var Sttime = req.body.StartTime;
     var Entime = req.body.EndTime;
     var stopwhere = [req.body.Stop00, req.body.Stop01, req.body.Stop02, req.body.Stop03, req.body.Stop04, req.body.Stop05, req.body.Stop06];
     var frequent = req.body.freq;
     console.log(stopwhere);
->>>>>>> c066f40e7fb3c66ee6e45f466bda951f80fa9f4d
     new transferSchemaModel({
         Bus_id: Bus_no,
         Start: Startpt,
