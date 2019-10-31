@@ -43,7 +43,8 @@ app.post('/efgh', (req, res) => {
 app.post('/abcd', (req, res) => {
 
     console.log(req.body);
-    var Bus_no = req.body.id_code;
+    var mode_use=req.body.mode;
+    var mode_no = req.body.id_code;
     var Startpt = req.body.item1;
     var Endpt = req.body.item2;
     var Sttime = req.body.StartTime;
@@ -52,7 +53,8 @@ app.post('/abcd', (req, res) => {
     var frequent = req.body.freq;
     console.log(stopwhere);
     new transferSchemaModel({
-        Bus_id: Bus_no,
+        mode:mode_use,
+        mode_id: mode_no,
         Start: Startpt,
         End: Endpt,
         StartTime: Sttime,
