@@ -35,6 +35,7 @@ app.post('/efgh', (req, res) => {
     console.log("Pickup:", pickup);
     console.log("Destination:", destination);
 
+    
     transferSchemaModel.find({Stops:{$all:[pickup,destination]}}).then((currenttransferSchemaModel) => {
         console.log(currenttransferSchemaModel);
     });
