@@ -36,12 +36,25 @@ app.post('/efgh', (req, res) => {
     console.log("Destination:", destination);
 
     
-    transferSchemaModel.find({Stops:{$all:[pickup,destination]}}).then((currenttransferSchemaModel) => {
-       var stopofbus=currenttransferSchemaModel[0].Stops;
-       var stopofmet=currenttransferSchemaModel[1].Stops;
-       console.log(stopofmet);
-       console.log(stopofbus);
-           transferSchemaModel.find({Stops})
+    transferSchemaModel.find({Stops:{$in:[pickup]}}).then((currenttransferSchemaModel) => {
+        console.log("First Board Commute:",currenttransferSchemaModel[0].mode_id);
+        console.log("From Bus Stop:",pickup);
+       var stopenroute=currenttransferSchemaModel[0].Stops;
+       //var stopofmet=currenttransferSchemaModel[1].Stops;
+       console.log(stopenroute);
+      // console.log(stopofbus);
+           transferSchemaModel.find({Stops:{$in:[stopenroute,destination]}}).then((currenttransferSchemaModel)=>{
+            
+            if(currenttransferSchemaModel[1].Stops==currenttransferSchemaModel[2].Stops)
+            {console.log(currenttransferSchemaModel[1].Stop)}
+            
+            console.log("Inroute commutes are:");      
+
+             console.log(currenttransferSchemaModel[1]);
+             console.log(currenttransferSchemaModel[2]);
+
+
+           });
     });
 });
 
