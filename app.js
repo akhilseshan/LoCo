@@ -53,6 +53,11 @@ app.post('/efgh', (req, res) => {
              console.log(currenttransferSchemaModel[1]);
              console.log(currenttransferSchemaModel[2]);
 
+             var routenew1=[currenttransferSchemaModel[1].mode,currenttransferSchemaModel[1].mode_id,currenttransferSchemaModel[1].Start,currenttransferSchemaModel[1].End,currenttransferSchemaModel[1].StartTime,currenttransferSchemaModel[2].mode,currenttransferSchemaModel[2].mode_id,currenttransferSchemaModel[2].Start,currenttransferSchemaModel[2].End,currenttransferSchemaModel[2].StartTime];
+            
+             console.log(routenew1);
+             
+             res.render('page1',routenew1);
 
            });
     });
@@ -85,12 +90,14 @@ app.post('/abcd', (req, res) => {
         console.log(currenttransferSchemaModel);
         console.log("Details added successfully");
     });
-});
+
+   });
 
 app.get('/abcd', (req, res) => {
     res.render('enter');
 });
 
+ 
 todocontroller(app);
 
 app.listen(3000);
