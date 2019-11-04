@@ -53,7 +53,13 @@ app.post('/efgh', (req, res) => {
              console.log(currenttransferSchemaModel[1]);
              console.log(currenttransferSchemaModel[2]);
 
-             var routenew1=[currenttransferSchemaModel[1].mode,currenttransferSchemaModel[1].mode_id,currenttransferSchemaModel[1].Start,currenttransferSchemaModel[1].End,currenttransferSchemaModel[1].StartTime,currenttransferSchemaModel[2].mode,currenttransferSchemaModel[2].mode_id,currenttransferSchemaModel[2].Start,currenttransferSchemaModel[2].End,currenttransferSchemaModel[2].StartTime];
+             var routenew1={mode:currenttransferSchemaModel[1].mode,
+                modeid: currenttransferSchemaModel[1].mode_id,
+                start: currenttransferSchemaModel[1].Start,
+                end: currenttransferSchemaModel[1].End,
+                starttime:currenttransferSchemaModel[1].StartTime,
+                endtime: currenttransferSchemaModel[2].mode}
+                //modecurrenttransferSchemaModel[2].mode_id,currenttransferSchemaModel[2].Start,currenttransferSchemaModel[2].End,currenttransferSchemaModel[2].StartTime];
             
              console.log(routenew1);
              
