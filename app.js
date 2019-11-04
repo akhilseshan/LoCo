@@ -57,7 +57,7 @@ app.post('/efgh', (req, res) => {
             
              console.log(routenew1);
              
-             res.render('page1',routenew1);
+             res.render('page1',{routes: routenew1});
 
            });
     });
