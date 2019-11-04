@@ -53,17 +53,32 @@ app.post('/efgh', (req, res) => {
              console.log(currenttransferSchemaModel[1]);
              console.log(currenttransferSchemaModel[2]);
 
-             var routenew1={mode:currenttransferSchemaModel[1].mode,
+             var routenew1={ mode1:currenttransferSchemaModel[0].mode,
+                modeid1: currenttransferSchemaModel[0].mode_id,
+                start1: currenttransferSchemaModel[0].Start,
+                end1: currenttransferSchemaModel[0].End,
+                starttime1:currenttransferSchemaModel[0].StartTime,
+                endtime1: currenttransferSchemaModel[0].mode,
+                 
+                mode:currenttransferSchemaModel[1].mode,
                 modeid: currenttransferSchemaModel[1].mode_id,
                 start: currenttransferSchemaModel[1].Start,
                 end: currenttransferSchemaModel[1].End,
                 starttime:currenttransferSchemaModel[1].StartTime,
-                endtime: currenttransferSchemaModel[2].mode}
+                endtime: currenttransferSchemaModel[1].mode,
+                mode2:currenttransferSchemaModel[2].mode,
+                modeid2: currenttransferSchemaModel[2].mode_id,
+                start2: currenttransferSchemaModel[2].Start,
+                end2: currenttransferSchemaModel[2].End,
+                starttime2:currenttransferSchemaModel[2].StartTime,
+                endtime2: currenttransferSchemaModel[2].mode
+            
+            }
                 //modecurrenttransferSchemaModel[2].mode_id,currenttransferSchemaModel[2].Start,currenttransferSchemaModel[2].End,currenttransferSchemaModel[2].StartTime];
             
              console.log(routenew1);
              
-             res.render('page1',{routes: routenew1});
+             res.render('findpath.ejs',{routes: routenew1});
 
            });
     });
