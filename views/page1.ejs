@@ -1,0 +1,160 @@
+<html>
+    <head>
+                <title>
+            
+                </title>
+                <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+                <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB_dvpiDyg07irvwzeHg2afFILSaXRXH7E&v=3.exp&sensor=false&libraries=places"></script>
+                <link href="/assets/styles.css" rel="stylesheet" type="text/css" />
+                <link href='https://fonts.googleapis.com/css?family=Sofia' rel='stylesheet'>
+                <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+  <link href='https://fonts.googleapis.com/css?family=Black Ops One' rel='stylesheet'>
+  <link href='https://fonts.googleapis.com/css?family=BioRhyme' rel='stylesheet'>
+
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+            
+            
+                <style>
+                    #logo {
+                        font-family: 'Sofia';
+                        font-size: 32px;
+                        float: right;
+                        padding: 10px;
+
+                       }
+
+                       body{
+                        background: #0d1521;
+                       }
+                
+                       .column3 {
+                       
+                       width:45%;
+                       margin-top:30px;
+                      height: 80vh;
+                      border-style:dotted;
+                     
+                     background: rgb(18, 121, 95);
+                       } 
+                    
+                   .item{
+                       width: 350px;
+                       height:200px;
+                        
+                   }                      
+
+                   .tab-content{
+                       width: 200px;
+                   }
+
+                   #logo {
+            font-family: 'Sofia';
+            font-size: 32px;
+            float: right;
+            padding: 10px;
+            color: white;
+            background: black;
+        }
+                    
+                </style>
+
+    </head>
+    <body>
+            <div class="container">
+                    <div id="logo">LoCo</div>
+                    <form class="form-inline" action="/action_page.php" method="GET">
+                      <label for="pspot" style="font-family:BioRhyme;color:whitesmoke;padding:10px;"> Pickup: </label>
+                      <input type="text" class="form-control" id="pspot"  name="pickspot" style="padding: 10px;">
+                      <label for="lspot" style="font-family:BioRhyme;color:whitesmoke;padding: 10px;"> Destination: </label>
+                      <input type="text" class="form-control" id="lspot" name="dropspot" style="padding: 10px;">
+                      
+                   </form>
+
+                   <section id="routesnew" >
+                           
+                        <div class="column3" style="float:left;padding-left:20px">
+                            
+                            <p style="font-family:Black Ops One;">Routes <p>
+                                    <div class="container">
+                                             <ul class="nav nav-pills">
+                                              <li class="active" style="margin: 10px;font-family: Black Ops One;"><a data-toggle="pill" href="#home">R1</a></li>
+                                              <li style="margin: 10px;font-family: Black Ops One;"><a data-toggle="pill" href="#menu1">R2</a></li>
+                                              <li style="margin: 10px;font-family: Black Ops One;"><a data-toggle="pill" href="#menu2">R3</a></li>
+                                              <li style="margin: 10px;font-family: Black Ops One;"><a data-toggle="pill" href="#menu3">R4</a></li>
+                                            </ul>
+                                          
+                                            <div class="tab-content">
+                                              <div id="home" class="tab-pane fade in active">
+                                                <h3>Route 1</h3>
+                                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                                              </div>
+                                              <div id="menu1" class="tab-pane fade">
+                                                <h3>Menu 1</h3>
+                                                <p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+                                              </div>
+                                              <div id="menu2" class="tab-pane fade">
+                                                <h3>Menu 2</h3>
+                                                <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam.</p>
+                                              </div>
+                                              <div id="menu3" class="tab-pane fade">
+                                                <h3>Menu 3</h3>
+                                                <p>Eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.</p>
+                                              </div>
+                                            </div>
+                                          </div>
+                        </div></section>
+                        <section id="attract">
+                        <div class="column3" style="float:right">
+                          <p style="padding-left:100px;font-family: Black Ops One;">Explore In-City Attractions <p>
+                                <div class="container">
+                                        <div id="myCarousel" class="carousel slide" data-ride="carousel" style="width:350px;height: 200px;">
+                                          <!-- Indicators -->
+                                          <ol class="carousel-indicators">
+                                            <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+                                            <li data-target="#myCarousel" data-slide-to="1"></li>
+                                            <li data-target="#myCarousel" data-slide-to="2"></li>
+                                          </ol>
+                                      
+                                          <!-- Wrapper for slides -->
+                                          <div class="carousel-inner">
+                                            <div class="item active">
+                                              <img src="C:\Users\User\Desktop\street.jpeg" >
+                                            </div>
+                                      
+                                            <div class="item">
+                                              <img src="C:\Users\User\Desktop\imagesfoo.jpg">
+                                            </div>
+                                          
+                                            <div class="item">
+                                              <img src="C:\Users\User\Desktop\web\imagesfoo.jpg" >
+                                            </div>
+                                          </div>
+                                      
+                                          <!-- Left and right controls -->
+                                          <a class="left carousel-control" href="#myCarousel" data-slide="prev">
+                                            <span class="glyphicon glyphicon-chevron-left"></span>
+                                            <span class="sr-only">Previous</span>
+                                          </a>
+                                          <a class="right carousel-control" href="#myCarousel" data-slide="next">
+                                            <span class="glyphicon glyphicon-chevron-right"></span>
+                                            <span class="sr-only">Next</span>
+                                          </a>
+                                        </div>
+                                      </div>
+                                      
+                            </div>
+                                
+                    </section>
+                  </div>   
+
+    </body>
+</html>
