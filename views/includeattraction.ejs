@@ -1,0 +1,45 @@
+<html>
+
+<head>
+    <style>
+        #todo-table {
+            position: relative;
+            width: 95%;
+            background: #090d13;
+            margin: 0 auto;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+        
+        #todo-table form:after {
+            margin: 0;
+            content: '';
+            display: block;
+            clear: both;
+        }
+        
+        input[type="text"] {
+            width: 60%;
+            padding: 20px;
+            background: #181c22;
+            height: 5%;
+            float: left;
+            font-size: 10px;
+            color: #989898;
+            border: double;
+        }
+    </style>
+
+</head>
+<body>
+        <div id="todo-table">
+                <div id="logo" style="color:ivory;Size:10px">LoCo</div>
+                <form action="/pqrs" method="POST">
+                    <input type="text" name="NearStop" placeholder="Near" required>
+                    <input  type="text" name="Attraction" placeholder="Attraction" required>
+                    <input type="submit" name="submit">
+
+                 </form>
+        </div>
+    </body>            
+</html>

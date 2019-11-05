@@ -1,5 +1,6 @@
 var express = require('express');
 var transferSchemaModel = require('./models/transfer.js');
+var attractSchemaModel=require('./models/attractions.js');
 var userSchemaModel = require('./models/user.js');
 var request = require('request');
 var bodyParser = require('body-parser');
@@ -80,9 +81,49 @@ app.post('/efgh', (req, res) => {
              
              res.render('findpath.ejs',{routes: routenew1});
 
+            app.get('/views/explore.ejs',(req,res)=>{
+                 
+                attractSchemaModel.find({Near:{$in:[pickup]}}).then((currentattractSchemaModel)=>{
+                
+                    console.log(currentattractSchemaModel);
+                    var findplaces={ 
+                        nearwhere:currenttransferSchemaModel[0].Near,
+                        placename: currenttransferSchemaModel[0].visit,
+                    }
+                 
+                res.render('explore',{attract:findplaces});
+
+                    
+            });
+
            });
     });
 });
+});
+
+     
+
+    app.post('/pqrs',(req,res)=>{
+        console.log(req.body);
+        var where=req.body.NearStop;
+        var what=req.body.Attraction;
+
+        new attractSchemaModel({
+            visit:what,
+            Near:where,
+
+        }).save().then((currenttransferSchemaModel) => {
+            console.log(currenttransferSchemaModel);
+            console.log("Details added successfully");
+        });
+    });
+
+    
+    app.get('/pqrs',(req,res)=>{
+             res.render('includeattraction');
+    });
+
+    
 
 app.post('/abcd', (req, res) => {
 
