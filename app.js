@@ -53,45 +53,49 @@ app.post('/efgh', (req, res) => {
             
              for(i=1;i<num;i++){
              console.log(currenttransferSchemaModel[i]);
+             }
              
-             
+             for(i=0;i<num;i++)
+              {
              var routenew1={ mode1:currenttransferSchemaModel[i].mode,
                 modeid1: currenttransferSchemaModel[i].mode_id,
                 start1: currenttransferSchemaModel[i].Start,
                 end1: currenttransferSchemaModel[i].End,
                 starttime1:currenttransferSchemaModel[i].StartTime,
                 endtime1: currenttransferSchemaModel[i].mode,
-                   
-            }
-            console.log(routenew1);
-        };
+             }  
+                res.render('findpath.ejs',{routes: routenew1});
+                console.log(routenew1);
+                    
+            };
                 //modecurrenttransferSchemaModel[2].mode_id,currenttransferSchemaModel[2].Start,currenttransferSchemaModel[2].End,currenttransferSchemaModel[2].StartTime];
             
              
              
-             res.render('findpath.ejs',{routes: routenew1});
-
-            app.get('/views/explore.ejs',(req,res)=>{
-                 
-                attractSchemaModel.find({Near:{$in:[pickup]}}).then((currentattractSchemaModel)=>{
-                    for(i=0;i<num;i++){
-                    console.log(currentattractSchemaModel);
-                   
-                    var findplaces={ 
-                        nearwhere:currenttransferSchemaModel[i].Near,
-                        placename: currenttransferSchemaModel[i].visit,
-                    }}
-                 
-                res.render('explore',{attract:findplaces});
-
-                    
-            });
-
-           });
+             
+           
     });
 });
 });
+ 
+app.get('explore',(req,res)=>{
+                 
+    attractSchemaModel.find({Near:{$in:[pickup]}}).then((currentattractSchemaModel)=>{
+        for(i=0;i<num;i++){
+        console.log(currentattractSchemaModel);
 
+        
+        var findplaces={ 
+            nearwhere:currenttransferSchemaModel[i].Near,
+            placename: currenttransferSchemaModel[i].visit,
+        }}
+     
+    res.render('explore',{attract:findplaces});
+
+        
+});
+
+});
      
 
     app.post('/pqrs',(req,res)=>{
