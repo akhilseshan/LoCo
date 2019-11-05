@@ -45,51 +45,42 @@ app.post('/efgh', (req, res) => {
        console.log(stopenroute);
       // console.log(stopofbus);
            transferSchemaModel.find({Stops:{$in:[stopenroute,destination]}}).then((currenttransferSchemaModel)=>{
-            
+            var num=currenttransferSchemaModel.length;
             if(currenttransferSchemaModel[1].Stops==currenttransferSchemaModel[2].Stops)
             {console.log(currenttransferSchemaModel[1].Stop)}
             
             console.log("Inroute commutes are:");      
-
-             console.log(currenttransferSchemaModel[1]);
-             console.log(currenttransferSchemaModel[2]);
-
-             var routenew1={ mode1:currenttransferSchemaModel[0].mode,
-                modeid1: currenttransferSchemaModel[0].mode_id,
-                start1: currenttransferSchemaModel[0].Start,
-                end1: currenttransferSchemaModel[0].End,
-                starttime1:currenttransferSchemaModel[0].StartTime,
-                endtime1: currenttransferSchemaModel[0].mode,
-                 
-                mode:currenttransferSchemaModel[1].mode,
-                modeid: currenttransferSchemaModel[1].mode_id,
-                start: currenttransferSchemaModel[1].Start,
-                end: currenttransferSchemaModel[1].End,
-                starttime:currenttransferSchemaModel[1].StartTime,
-                endtime: currenttransferSchemaModel[1].mode,
-                mode2:currenttransferSchemaModel[2].mode,
-                modeid2: currenttransferSchemaModel[2].mode_id,
-                start2: currenttransferSchemaModel[2].Start,
-                end2: currenttransferSchemaModel[2].End,
-                starttime2:currenttransferSchemaModel[2].StartTime,
-                endtime2: currenttransferSchemaModel[2].mode
             
+             for(i=1;i<num;i++){
+             console.log(currenttransferSchemaModel[i]);
+             
+             
+             var routenew1={ mode1:currenttransferSchemaModel[i].mode,
+                modeid1: currenttransferSchemaModel[i].mode_id,
+                start1: currenttransferSchemaModel[i].Start,
+                end1: currenttransferSchemaModel[i].End,
+                starttime1:currenttransferSchemaModel[i].StartTime,
+                endtime1: currenttransferSchemaModel[i].mode,
+                   
             }
+            console.log(routenew1);
+        };
                 //modecurrenttransferSchemaModel[2].mode_id,currenttransferSchemaModel[2].Start,currenttransferSchemaModel[2].End,currenttransferSchemaModel[2].StartTime];
             
-             console.log(routenew1);
+             
              
              res.render('findpath.ejs',{routes: routenew1});
 
             app.get('/views/explore.ejs',(req,res)=>{
                  
                 attractSchemaModel.find({Near:{$in:[pickup]}}).then((currentattractSchemaModel)=>{
-                
+                    for(i=0;i<num;i++){
                     console.log(currentattractSchemaModel);
+                   
                     var findplaces={ 
-                        nearwhere:currenttransferSchemaModel[0].Near,
-                        placename: currenttransferSchemaModel[0].visit,
-                    }
+                        nearwhere:currenttransferSchemaModel[i].Near,
+                        placename: currenttransferSchemaModel[i].visit,
+                    }}
                  
                 res.render('explore',{attract:findplaces});
 
