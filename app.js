@@ -40,22 +40,22 @@ app.post('/efgh', (req, res) => {
     transferSchemaModel.find({Stops:{$in:[pickup]}}).then((currenttransferSchemaModel) => {
         console.log("First Board Commute:",currenttransferSchemaModel[0].mode_id);
         console.log("From Bus Stop:",pickup);
-       var stopenroute=currenttransferSchemaModel[0].Stops;
+        var stopenroute=currenttransferSchemaModel[0].Stops;
        //var stopofmet=currenttransferSchemaModel[1].Stops;
        console.log(stopenroute);
       // console.log(stopofbus);
            transferSchemaModel.find({Stops:{$in:[stopenroute,destination]}}).then((currenttransferSchemaModel)=>{
             var num=currenttransferSchemaModel.length;
             if(currenttransferSchemaModel[1].Stops==currenttransferSchemaModel[2].Stops)
-            {console.log(currenttransferSchemaModel[1].Stop)}
+            {console.log(currenttransferSchemaModel[1].Stops)}
             
             console.log("Inroute commutes are:");      
             
              for(i=1;i<num;i++){
              console.log(currenttransferSchemaModel[i]);
-             }
+             };
              
-             for(i=0;i<num;i++)
+             for(i=1;i<num;i++)
               {
              var routenew1={ mode1:currenttransferSchemaModel[i].mode,
                 modeid1: currenttransferSchemaModel[i].mode_id,
@@ -63,39 +63,30 @@ app.post('/efgh', (req, res) => {
                 end1: currenttransferSchemaModel[i].End,
                 starttime1:currenttransferSchemaModel[i].StartTime,
                 endtime1: currenttransferSchemaModel[i].mode,
-             }  
-                res.render('findpath.ejs',{routes: routenew1});
+             };  
+                res.render('findpath.ejs',{routes:routenew1});
                 console.log(routenew1);
                     
             };
                 //modecurrenttransferSchemaModel[2].mode_id,currenttransferSchemaModel[2].Start,currenttransferSchemaModel[2].End,currenttransferSchemaModel[2].StartTime];
-            
+            attractSchemaModel.find({Near:{$in:[pickup]}}).then((currentattractSchemaModel)=>{
+                    for(i=0;i<num;i++){
+                    console.log(currentattractSchemaModel);   
+                    var findplaces={ 
+                        nearwhere:currenttransferSchemaModel[i].Near,
+                        placename: currenttransferSchemaModel[i].visit,
+                    };
+                 
+                res.render('explore',{attract:findplaces[i]}); 
+                };
              
-             
-             
-           
     });
 });
-});
- 
-app.get('explore',(req,res)=>{
-                 
-    attractSchemaModel.find({Near:{$in:[pickup]}}).then((currentattractSchemaModel)=>{
-        for(i=0;i<num;i++){
-        console.log(currentattractSchemaModel);
+});            
+});      
 
-        
-        var findplaces={ 
-            nearwhere:currenttransferSchemaModel[i].Near,
-            placename: currenttransferSchemaModel[i].visit,
-        }}
-     
-    res.render('explore',{attract:findplaces});
 
-        
-});
 
-});
      
 
     app.post('/pqrs',(req,res)=>{
