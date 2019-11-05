@@ -6,6 +6,7 @@ const attractSchema = new Schema({
     
     visit:String,
     Near:String,
+    category:String,
    
 });
 
