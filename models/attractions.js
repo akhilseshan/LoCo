@@ -5,7 +5,7 @@ const Schema = mongoose.Schema;
 const attractSchema = new Schema({
     
     visit:String,
-    Near:String,
+    near:String,
     category:String,
    
 });

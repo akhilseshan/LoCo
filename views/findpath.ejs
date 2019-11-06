@@ -36,60 +36,42 @@
                   <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
                     <div class="card-body">
                             <p>
-                                    Board Initial Transfer: <%= routes.modeid1%><br>
-                                    Mode :<%= routes.mode1%><br>
-                                    Transfer Starts @:<%= routes.start1%><br>
-                                    Transfer Ends @:<%= routes.end1%><br>
-                                    Departs Start @:<%= routes.starttime1%><br>
+                                    Board Initial Transfer: <%= routes[0].modeid1%><br>
+                                    Mode :<%= routes[0].mode1%><br>
+                                    Transfer Starts @:<%= routes[0].start1%><br>
+                                    Transfer Ends @:<%= routes[0].end1%><br>
+                                    Departs Start @:<%= routes[0].starttime1%><br>
                                  </p>
                     </div>
                   </div>
                 </div>
-                <div class="card">
-                  <div class="card-header" id="headingTwo">
-                    <h2 class="mb-0">
-                      <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                        Transfer Change: Option 1
-                      </button>
-                    </h2>
-                  </div>
-                  <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample">
-                    <div class="card-body">
-                        <p>
-                            Board Transfer 2: <%= routes.modeid%><br>
-                            Mode :<%= routes.mode%><br>
-                            Transfer Starts @:<%= routes.start%><br>
-                            Transfer Ends @:<%= routes.end%><br>
-                            Departs Start @:<%= routes.starttime%><br>
-                        </p>
-                    </div>
-                  </div>
-                </div>
+                <% for(i=1;i<routes.length;i++) { %>
                 <div class="card">
                   <div class="card-header" id="headingThree">
                     <h2 class="mb-0">
                       <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-                        Transfer Change:Option 2
+                        Transfer Change:Option <%= i %>
                       </button>
                     </h2>
                   </div>
                   <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordionExample">
                     <div class="card-body">
                         <p>
-                            Board Transfer 2: <%= routes.modeid2%><br>
-                            Mode :<%= routes.mode2%><br>
-                            Transfer Starts @:<%= routes.start2%><br>
-                            Transfer Ends @:<%= routes.end2%><br>
-                            Departs Start @:<%= routes.starttime2%><br>
+                            Board Transfer 2: <%= routes[i].modeid1%><br>
+                            Mode :<%= routes[i].mode1%><br>
+                            Transfer Starts @:<%= routes[i].start1%><br>
+                            Transfer Ends @:<%= routes[i].end1%><br>
+                            Departs Start @:<%= routes[i].starttime1%><br>
                     </p>
-                    </div>
+                   </div>
                   </div>
                 </div>
+                <% } %>
               </div>
               <div>
               <img src="..." class="rounded float-left" alt="...">
               <img src="C:\Users\User\Desktop\itc_1icon.jpg" class="rounded float-right" alt="...">
-              <form action="/views/explore.ejs">
+              <form action="/lmno">
               <button type="submit" class="btn btn-primary btn-lg btn-block">Check out In-City Attractions</button>
             </form>
               </div>

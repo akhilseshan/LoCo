@@ -25,6 +25,10 @@ mongoose.connect("mongodb://usermee_30:aim2reach@cluster0-shard-00-00-yofix.mong
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
+app.get('/lmno',(req,res)=>{
+    res.render('explore')
+});
+
 
 app.post('/efgh', (req, res) => {
 
@@ -40,59 +44,59 @@ app.post('/efgh', (req, res) => {
     transferSchemaModel.find({Stops:{$in:[pickup]}}).then((currenttransferSchemaModel) => {
         console.log("First Board Commute:",currenttransferSchemaModel[0].mode_id);
         console.log("From Bus Stop:",pickup);
-       var stopenroute=currenttransferSchemaModel[0].Stops;
+        var stopenroute=currenttransferSchemaModel[0].Stops;
        //var stopofmet=currenttransferSchemaModel[1].Stops;
        console.log(stopenroute);
       // console.log(stopofbus);
            transferSchemaModel.find({Stops:{$in:[stopenroute,destination]}}).then((currenttransferSchemaModel)=>{
             var num=currenttransferSchemaModel.length;
-            if(currenttransferSchemaModel[1].Stops==currenttransferSchemaModel[2].Stops)
-            {console.log(currenttransferSchemaModel[1].Stop)}
+           // if(currenttransferSchemaModel[1].Stops==currenttransferSchemaModel[2].Stops)
+           // {console.log(currenttransferSchemaModel[1].Stops)}
             
             console.log("Inroute commutes are:");      
             
              for(i=1;i<num;i++){
              console.log(currenttransferSchemaModel[i]);
-             
-             
-             var routenew1={ mode1:currenttransferSchemaModel[i].mode,
+             };
+             var routenew1 = [];
+             for(i=1;i<num;i++)
+              {            
+                routenew1.push({ mode1:currenttransferSchemaModel[i].mode,
                 modeid1: currenttransferSchemaModel[i].mode_id,
                 start1: currenttransferSchemaModel[i].Start,
                 end1: currenttransferSchemaModel[i].End,
                 starttime1:currenttransferSchemaModel[i].StartTime,
-                endtime1: currenttransferSchemaModel[i].mode,
-                   
-            }
-            console.log(routenew1);
-        };
-                //modecurrenttransferSchemaModel[2].mode_id,currenttransferSchemaModel[2].Start,currenttransferSchemaModel[2].End,currenttransferSchemaModel[2].StartTime];
-            
-             
-             
-             res.render('findpath.ejs',{routes: routenew1});
-
-            app.get('/views/explore.ejs',(req,res)=>{
-                 
-                attractSchemaModel.find({Near:{$in:[pickup]}}).then((currentattractSchemaModel)=>{
-                    for(i=0;i<num;i++){
-                    console.log(currentattractSchemaModel);
-                   
-                    var findplaces={ 
-                        nearwhere:currenttransferSchemaModel[i].Near,
-                        placename: currenttransferSchemaModel[i].visit,
-                    }}
-                 
-                res.render('explore',{attract:findplaces});
-
+                endtime1: currenttransferSchemaModel[i].EndTime});  
+                console.log(routenew1);
+                
+                
                     
-            });
-
-           });
+            }
+            res.render('findpath',{routes:routenew1});
+        });
     });
-});
-});
+            
+                attractSchemaModel.find({near:{$in:[pickup]}}).then((currentattractSchemaModel)=>{
+                     var num=currentattractSchemaModel.length;    
+                    for(i=0;i<num;i++){
+                        console.log(currentattractSchemaModel[i]);  
+                    var findplaces={ 
+                        
+                        placename: currentattractSchemaModel[i].visit,
+                        nearwhere: currentattractSchemaModel[i].near,
+                    };
+                 console.log(findplaces);
+                res.render('explore',{attractions:findplaces}); 
+                };
+             
+        });
+   
 
-     
+        
+                           //modecurrenttransferSchemaModel[2].mode_id,currenttransferSchemaModel[2].Start,currenttransferSchemaModel[2].End,currenttransferSchemaModel[2].StartTime];
+           
+});
+  
 
     app.post('/pqrs',(req,res)=>{
         console.log(req.body);
