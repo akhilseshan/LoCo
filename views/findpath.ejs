@@ -6,9 +6,16 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 
-    </head>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+    <link href="https://fonts.googleapis.com/css?family=McLaren&display=swap" rel="stylesheet">  
+  
+  </head>
 
     <body>
+      <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+      <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>      
 
             <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
             <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
@@ -45,7 +52,7 @@
                     </div>
                   </div>
                 </div>
-                <% for(i=1;i<routes.length;i++) { %>
+                <% for(i=0;i<routes.length;i++) { %>
                 <div class="card">
                   <div class="card-header" id="headingThree">
                     <h2 class="mb-0">
@@ -69,11 +76,25 @@
                 <% } %>
               </div>
               <div>
-              <img src="..." class="rounded float-left" alt="...">
-              <img src="C:\Users\User\Desktop\itc_1icon.jpg" class="rounded float-right" alt="...">
-              <form action="/lmno">
-              <button type="submit" class="btn btn-primary btn-lg btn-block">Check out In-City Attractions</button>
-            </form>
+                  
+                
+                  <div class="row">
+                  <% for(i=0;i<routes.length;i++) { %>
+                      <a class="btn btn-primary" data-toggle="collapse" href="#multiCollapseExample<%= i %>" role="button" aria-expanded="false" aria-controls="multiCollapseExample1">Go Shopping</a>
+                      <div class="col">
+                          <div class="collapse multi-collapse" id="multiCollapseExample1">
+                            <div class="card card-body">
+                                <p>
+                                        Wanna See a Movie ?<br>
+                                        Category: <%= attractions.placename%><br>
+                                        Where is it :<%= attractions.nearwhere%><br>
+                                </p>
+                             
+                            </div>
+                          </div>
+                        </div>
+                        <% } %>
+              
               </div>
 
     </body>
