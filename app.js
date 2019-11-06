@@ -106,7 +106,7 @@ app.post('/efgh', (req, res) => {
 
         new attractSchemaModel({
             visit:what,
-            Near:where,
+            near:where,
 
         }).save().then((currenttransferSchemaModel) => {
             console.log(currenttransferSchemaModel);
