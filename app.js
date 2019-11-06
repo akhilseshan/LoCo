@@ -58,20 +58,21 @@ app.post('/efgh', (req, res) => {
              for(i=1;i<num;i++){
              console.log(currenttransferSchemaModel[i]);
              };
-             
+             var routenew1 = [];
              for(i=1;i<num;i++)
               {            
-                var routenew1= { mode1:currenttransferSchemaModel[i].mode,
+                routenew1.push({ mode1:currenttransferSchemaModel[i].mode,
                 modeid1: currenttransferSchemaModel[i].mode_id,
                 start1: currenttransferSchemaModel[i].Start,
                 end1: currenttransferSchemaModel[i].End,
                 starttime1:currenttransferSchemaModel[i].StartTime,
-                endtime1: currenttransferSchemaModel[i].mode,};  
+                endtime1: currenttransferSchemaModel[i].EndTime});  
                 console.log(routenew1);
-                res.render('findpath',{routes:routenew1});
+                
                 
                     
-            };
+            }
+            res.render('findpath',{routes:routenew1});
         });
     });
             
