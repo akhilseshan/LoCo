@@ -84,11 +84,14 @@ app.post('/efgh', (req, res) => {
                    nearwhere: currentattractSchemaModel[i].near
                  });
                 }
+                
                  console.log(findplaces);
                  finalplaces.push(findplaces);
+
+                 res.render('findpath',{routes:finalroutes,attractions:finalplaces}); 
                });
             
-               res.render('findpath',{routes:finalroutes},{attractions:finalplaces}); 
+            //  res.render('findpath',{routes:finalroutes},{attractions:finalplaces}); 
       
        
                       
