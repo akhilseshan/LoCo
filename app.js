@@ -25,9 +25,9 @@ mongoose.connect("mongodb://usermee_30:aim2reach@cluster0-shard-00-00-yofix.mong
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
-app.get('/lmno',(req,res)=>{
-    res.render('explore')
-});
+//app.get('/lmno',(req,res)=>{
+ //   res.render('explore')
+//});
 
 
 app.post('/efgh', (req, res) => {
@@ -35,6 +35,9 @@ app.post('/efgh', (req, res) => {
     console.log(req.body);
     var pickup = req.body.item1;
     var destination = req.body.item2;
+    var finalroutes = [];
+    var finalplaces=[];
+     
 
 
     console.log("Pickup:", pickup);
@@ -42,24 +45,21 @@ app.post('/efgh', (req, res) => {
 
     
     transferSchemaModel.find({Stops:{$in:[pickup]}}).then((currenttransferSchemaModel) => {
-        console.log("First Board Commute:",currenttransferSchemaModel[0].mode_id);
+       console.log("First Board Commute:",currenttransferSchemaModel[0].mode_id);
         console.log("From Bus Stop:",pickup);
         var stopenroute=currenttransferSchemaModel[0].Stops;
-       //var stopofmet=currenttransferSchemaModel[1].Stops;
-       console.log(stopenroute);
-      // console.log(stopofbus);
-           transferSchemaModel.find({Stops:{$in:[stopenroute,destination]}}).then((currenttransferSchemaModel)=>{
+             console.log(stopenroute);
+     transferSchemaModel.find({Stops:{$in:[stopenroute,destination]}}).then((currenttransferSchemaModel)=>{
             var num=currenttransferSchemaModel.length;
-           // if(currenttransferSchemaModel[1].Stops==currenttransferSchemaModel[2].Stops)
-           // {console.log(currenttransferSchemaModel[1].Stops)}
-            
+                     
             console.log("Inroute commutes are:");      
             
              for(i=1;i<num;i++){
              console.log(currenttransferSchemaModel[i]);
              };
-             var routenew1 = [];
-             for(i=1;i<num;i++)
+            
+             var routenew1=[];
+             for(i=0;i<num;i++)
               {            
                 routenew1.push({ mode1:currenttransferSchemaModel[i].mode,
                 modeid1: currenttransferSchemaModel[i].mode_id,
@@ -67,32 +67,33 @@ app.post('/efgh', (req, res) => {
                 end1: currenttransferSchemaModel[i].End,
                 starttime1:currenttransferSchemaModel[i].StartTime,
                 endtime1: currenttransferSchemaModel[i].EndTime});  
-                console.log(routenew1);
-                
-                
-                    
-            }
-            res.render('findpath',{routes:routenew1});
-        });
-    });
-            
-                attractSchemaModel.find({near:{$in:[pickup]}}).then((currentattractSchemaModel)=>{
-                     var num=currentattractSchemaModel.length;    
-                    for(i=0;i<num;i++){
-                        console.log(currentattractSchemaModel[i]);  
-                    var findplaces={ 
-                        
-                        placename: currentattractSchemaModel[i].visit,
-                        nearwhere: currentattractSchemaModel[i].near,
-                    };
+               
+    }       
+                console.log(routenew1);    
+                finalroutes.push(routenew1);
+            });
+            attractSchemaModel.find({near:{$in:[pickup]}}).then((currentattractSchemaModel)=>{
+                  //for(i=1;i<num;i++){
+                  //  console.log(currentattractSchemaModel[i]);
+                   // };
+                   var findplaces = [];     
+                   var num=currentattractSchemaModel.length;
+                   for(i=0;i<num;i++){          
+                 findplaces.push({ 
+                   placename: currentattractSchemaModel[i].visit,
+                   nearwhere: currentattractSchemaModel[i].near
+                 });
+                }
                  console.log(findplaces);
-                res.render('explore',{attractions:findplaces}); 
-                };
-             
+                 finalplaces.push(findplaces);
+               });
+            
+               res.render('findpath',{routes:finalroutes},{attractions:finalplaces}); 
+      
+       
+                      
         });
-   
-
-        
+         
                            //modecurrenttransferSchemaModel[2].mode_id,currenttransferSchemaModel[2].Start,currenttransferSchemaModel[2].End,currenttransferSchemaModel[2].StartTime];
            
 });
@@ -105,7 +106,7 @@ app.post('/efgh', (req, res) => {
 
         new attractSchemaModel({
             visit:what,
-            Near:where,
+            near:where,
 
         }).save().then((currenttransferSchemaModel) => {
             console.log(currenttransferSchemaModel);
