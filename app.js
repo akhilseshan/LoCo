@@ -25,6 +25,10 @@ mongoose.connect("mongodb://usermee_30:aim2reach@cluster0-shard-00-00-yofix.mong
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
+app.get('/lmno',(req,res)=>{
+    res.render('explore')
+});
+
 
 app.post('/efgh', (req, res) => {
 
@@ -46,8 +50,8 @@ app.post('/efgh', (req, res) => {
       // console.log(stopofbus);
            transferSchemaModel.find({Stops:{$in:[stopenroute,destination]}}).then((currenttransferSchemaModel)=>{
             var num=currenttransferSchemaModel.length;
-            if(currenttransferSchemaModel[1].Stops==currenttransferSchemaModel[2].Stops)
-            {console.log(currenttransferSchemaModel[1].Stops)}
+           // if(currenttransferSchemaModel[1].Stops==currenttransferSchemaModel[2].Stops)
+           // {console.log(currenttransferSchemaModel[1].Stops)}
             
             console.log("Inroute commutes are:");      
             
@@ -56,38 +60,42 @@ app.post('/efgh', (req, res) => {
              };
              
              for(i=1;i<num;i++)
-              {
-             var routenew1={ mode1:currenttransferSchemaModel[i].mode,
+              {            
+                var routenew1= { mode1:currenttransferSchemaModel[i].mode,
                 modeid1: currenttransferSchemaModel[i].mode_id,
                 start1: currenttransferSchemaModel[i].Start,
                 end1: currenttransferSchemaModel[i].End,
                 starttime1:currenttransferSchemaModel[i].StartTime,
-                endtime1: currenttransferSchemaModel[i].mode,
-             };  
-                res.render('findpath.ejs',{routes:routenew1});
+                endtime1: currenttransferSchemaModel[i].mode,};  
                 console.log(routenew1);
+                res.render('findpath',{routes:routenew1});
+                
                     
             };
-                //modecurrenttransferSchemaModel[2].mode_id,currenttransferSchemaModel[2].Start,currenttransferSchemaModel[2].End,currenttransferSchemaModel[2].StartTime];
-            attractSchemaModel.find({Near:{$in:[pickup]}}).then((currentattractSchemaModel)=>{
+        });
+    });
+            
+                attractSchemaModel.find({near:{$in:[pickup]}}).then((currentattractSchemaModel)=>{
+                     var num=currentattractSchemaModel.length;    
                     for(i=0;i<num;i++){
-                    console.log(currentattractSchemaModel);   
+                        console.log(currentattractSchemaModel[i]);  
                     var findplaces={ 
-                        nearwhere:currenttransferSchemaModel[i].Near,
-                        placename: currenttransferSchemaModel[i].visit,
+                        
+                        placename: currentattractSchemaModel[i].visit,
+                        nearwhere: currentattractSchemaModel[i].near,
                     };
-                 
-                res.render('explore',{attract:findplaces[i]}); 
+                 console.log(findplaces);
+                res.render('explore',{attractions:findplaces}); 
                 };
              
-    });
+        });
+   
+
+        
+                           //modecurrenttransferSchemaModel[2].mode_id,currenttransferSchemaModel[2].Start,currenttransferSchemaModel[2].End,currenttransferSchemaModel[2].StartTime];
+           
 });
-});            
-});      
-
-
-
-     
+  
 
     app.post('/pqrs',(req,res)=>{
         console.log(req.body);
