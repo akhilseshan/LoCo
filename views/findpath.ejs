@@ -53,14 +53,19 @@
                         </p>
                     </div>
                 </div>
+<<<<<<< HEAD
             </div>
             <% for(i=1;i<final.routes.length;i++) { %>
+=======
+                <% for(i=1;i<routes.length;i++) { %>
+>>>>>>> upstream/master
                 <div class="card">
                     <div class="card-header" id="headingThree">
                         <h2 class="mb-0">
                             <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
                         Transfer Change:Option <%= i %>
                       </button>
+<<<<<<< HEAD
                         </h2>
                     </div>
                     <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordionExample">
@@ -100,5 +105,26 @@
 
             </div>
 
+=======
+                    </h2>
+                  </div>
+                  <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordionExample">
+                    <div class="card-body">
+                        <p>
+                            Board Transfer <%= i %>: <%= routes[i].modeid1%><br>
+                            Mode :<%= routes[i].mode1%><br>
+                            Transfer Starts @:<%= routes[i].start1%><br>
+                            Transfer Ends @:<%= routes[i].end1%><br>
+                            Departs Start @:<%= routes[i].starttime1%><br>
+                    </p>
+                   </div>
+                  </div>
+                </div>
+                <% } %>
+              </div>              
+                
+              
+             
+>>>>>>> upstream/master
     </body>
 </htm>
