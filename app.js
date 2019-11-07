@@ -35,9 +35,13 @@ app.post('/efgh', (req, res) => {
     console.log(req.body);
     var pickup = req.body.item1;
     var destination = req.body.item2;
-    var finalroutes = [];
-    var finalplaces=[];
-     
+
+
+    
+    var Obj={
+     finalroutes: [],
+     finalplaces:[]
+    };
 
 
     console.log("Pickup:", pickup);
@@ -70,29 +74,35 @@ app.post('/efgh', (req, res) => {
                
     }       
                 console.log(routenew1);    
-                finalroutes.push(routenew1);
-            });
-            attractSchemaModel.find({near:{$in:[pickup]}}).then((currentattractSchemaModel)=>{
-                  //for(i=1;i<num;i++){
-                  //  console.log(currentattractSchemaModel[i]);
-                   // };
-                   var findplaces = [];     
-                   var num=currentattractSchemaModel.length;
-                   for(i=0;i<num;i++){          
-                 findplaces.push({ 
-                   placename: currentattractSchemaModel[i].visit,
-                   nearwhere: currentattractSchemaModel[i].near
-                 });
-                }
-                
-                 console.log(findplaces);
-                 finalplaces.push(findplaces);
+                //finalroutes.push(routenew1);
+                Obj.finalroutes.push(routenew1);
+               
+               
 
-                 res.render('findpath',{routes:finalroutes,attractions:finalplaces}); 
-               });
-            
-            //  res.render('findpath',{routes:finalroutes},{attractions:finalplaces}); 
+                attractSchemaModel.find({near:{$in:[pickup]}}).then((currentattractSchemaModel)=>{
+                    //for(i=1;i<num;i++){
+                    //  console.log(currentattractSchemaModel[i]);
+                     // };
+                     var findplaces = [];     
+                     var num2=currentattractSchemaModel.length;
+                     for(i=0;i<num2;i++){          
+                   findplaces.push({ 
+                     placename: currentattractSchemaModel[i].visit,
+                     nearwhere: currentattractSchemaModel[i].near
+                   });
+                  }
+                  
+                   console.log(findplaces);
+                   Obj.finalplaces.push(findplaces);
+                   
+            });
+           
+            res.render('findpath',{routes:Obj.finalroutes},{attractions:Obj.finalplaces}); 
       
+                 //res.render('findpath',{routes:finalroutes,attractions:finalplaces}); {attractions:finalplaces}
+      });
+            
+           
        
                       
         });

@@ -52,7 +52,7 @@
                     </div>
                   </div>
                 </div>
-                <% for(i=0;i<routes.length;i++) { %>
+                <% for(i=1;i<routes.length;i++) { %>
                 <div class="card">
                   <div class="card-header" id="headingThree">
                     <h2 class="mb-0">
@@ -64,7 +64,7 @@
                   <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordionExample">
                     <div class="card-body">
                         <p>
-                            Board Transfer 2: <%= routes[i].modeid1%><br>
+                            Board Transfer <%= i %>: <%= routes[i].modeid1%><br>
                             Mode :<%= routes[i].mode1%><br>
                             Transfer Starts @:<%= routes[i].start1%><br>
                             Transfer Ends @:<%= routes[i].end1%><br>
@@ -74,28 +74,9 @@
                   </div>
                 </div>
                 <% } %>
-              </div>
-              <div>
-                  
+              </div>              
                 
-                  <div class="row">
-                  <% for(i=0;i<attractions.length;i++) { %>
-                      <a class="btn btn-primary" data-toggle="collapse" href="#multiCollapseExample<%= i %>" role="button" aria-expanded="false" aria-controls="multiCollapseExample1">Go Shopping</a>
-                      <div class="col">
-                          <div class="collapse multi-collapse" id="multiCollapseExample1">
-                            <div class="card card-body">
-                                <p>
-                                        Wanna See a Movie ?<br>
-                                        Go to <%= attractions[i].placename%><br>
-                                        Where is it :<%= attractions[i].nearwhere%><br>
-                                </p>
-                             
-                            </div>
-                          </div>
-                        </div>
-                        <% } %>
               
-              </div>
-
+             
     </body>
 </htm>
