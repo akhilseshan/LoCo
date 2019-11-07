@@ -37,6 +37,10 @@ app.post('/efgh', (req, res) => {
     var destination = req.body.item2;
     var finalroutes = [];
     var finalplaces=[];
+    var final={
+        routes:[],
+        attractions:[]
+    };
      
 
 
@@ -58,10 +62,9 @@ app.post('/efgh', (req, res) => {
              console.log(currenttransferSchemaModel[i]);
              };
             
-             var routenew1=[];
              for(i=0;i<num;i++)
               {            
-                routenew1.push({ mode1:currenttransferSchemaModel[i].mode,
+                finalroutes.push({ mode1:currenttransferSchemaModel[i].mode,
                 modeid1: currenttransferSchemaModel[i].mode_id,
                 start1: currenttransferSchemaModel[i].Start,
                 end1: currenttransferSchemaModel[i].End,
@@ -69,34 +72,35 @@ app.post('/efgh', (req, res) => {
                 endtime1: currenttransferSchemaModel[i].EndTime});  
                
     }       
-                console.log(routenew1);    
-                finalroutes.push(routenew1);
-            });
+                console.log(finalroutes);    
+                final.routes=finalroutes;
+            }).then(()=>{
             attractSchemaModel.find({near:{$in:[pickup]}}).then((currentattractSchemaModel)=>{
                   //for(i=1;i<num;i++){
                   //  console.log(currentattractSchemaModel[i]);
-                   // };
-                   var findplaces = [];     
+                   // };   
                    var num=currentattractSchemaModel.length;
                    for(i=0;i<num;i++){          
-                 findplaces.push({ 
+                 finalplaces.push({ 
                    placename: currentattractSchemaModel[i].visit,
                    nearwhere: currentattractSchemaModel[i].near
                  });
                 }
-                 console.log(findplaces);
-                 finalplaces.push(findplaces);
-               });
-            
-               res.render('findpath',{routes:finalroutes},{attractions:finalplaces}); 
+                 console.log(finalplaces);
+                 final.attractions=finalplaces;
+
+               }).then(()=>{
+
+                console.log(final);
+               res.render('findpath',{final:final}); 
       
-       
+            });
+            });
                       
         });
-         
+    });
                            //modecurrenttransferSchemaModel[2].mode_id,currenttransferSchemaModel[2].Start,currenttransferSchemaModel[2].End,currenttransferSchemaModel[2].StartTime];
            
-});
   
 
     app.post('/pqrs',(req,res)=>{
